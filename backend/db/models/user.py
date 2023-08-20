@@ -4,7 +4,8 @@ from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy.orm import relationship
-from db.models.blog import Blog
+
+# from db.models.blog import Blog
 
 
 class User(Base):
@@ -13,4 +14,4 @@ class User(Base):
     password = Column(String, nullable=False)
     is_superuser = Column(Boolean(), default=False)
     is_active = Column(Boolean(), default=True)
-    blogs = relationship("Blog",back_populates="author")
+    blogs = relationship("Blog", back_populates="author")

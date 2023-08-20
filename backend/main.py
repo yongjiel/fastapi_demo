@@ -1,8 +1,8 @@
-from fastapi import FastAPI
-from core.config import settings
-from db.session import engine
-from db.base import Base
 from apis.base import api_router
+from core.config import settings
+from db.base import Base
+from db.session import engine
+from fastapi import FastAPI
 
 
 def create_tables():
@@ -19,11 +19,10 @@ def start_application():
     include_router(app)
     return app
 
-app = start_application()  
+
+app = start_application()
 
 
 @app.get("/")
 def hello_api():
-    return {'msg': "hello FastAPI"}
-
-
+    return {"msg": "hello FastAPI"}
