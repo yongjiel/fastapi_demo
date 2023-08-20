@@ -12,6 +12,8 @@ class CreateBlog(BaseModel):
 
     @root_validator(pre=True)
     def generate_slug(cls, values):
+        if "slug" in values:
+            return values
         if "title" in values:
             values["slug"] = values.get("title").replace(" ", "-").lower()
         return values
@@ -20,6 +22,8 @@ class CreateBlog(BaseModel):
 class ShowBlog(BaseModel):
     id: int
     title: str
+    slug: str
+    author_id: int
     content: Optional[str]
     created_at: date
 
